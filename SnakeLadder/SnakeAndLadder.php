@@ -1,11 +1,12 @@
 <?php
 
 /**
- * Uc-3
+ * Uc-4
  * Program for Snake and ladder 
  * 1. Setting starting position to 0
  * 2. Player rolls the die to get a random number between 1 to 6.
  * 3. The Player then checks for a Option. They are No Play, Ladder or Snake.
+ * 4. Repeat till player reaches to winning position 100.
  */
 class SnakeLadder
 {
@@ -13,7 +14,6 @@ class SnakeLadder
     const NO_PLAY = 0;
     const LADDER = 1;
     const SNAKE = 2;
-
     public $position = 0;
 
     //Function to display welcome message
@@ -26,36 +26,37 @@ class SnakeLadder
      * Function to check option Wheather it is ladder, snake or no play
      * checking with switch case using random dice
      */
-    function option($diceRoll)
+    function option()
     {
-        $optionCheck = rand(0, 2);
+        while ($this->position < 100) {
+            $diceRoll = $this->rollDice();
+            $optionCheck = rand(0, 2);
 
-        switch ($optionCheck) {
-            case SnakeLadder::LADDER:
-                $this->position += $diceRoll;
-                break;
+            echo "Option is : $optionCheck \n";
+            switch ($optionCheck) {
+                case SnakeLadder::LADDER:
+                    $this->position += $diceRoll;
+                    break;
 
-            case SnakeLadder::SNAKE:
-                $this->position -= $diceRoll;
-                break;
+                case SnakeLadder::SNAKE:
+                    $this->position -= $diceRoll;
+                    break;
 
-            default:
-                $this->position = $this->position;
-                break;
+                default:
+                    $this->position = $this->position;
+                    break;
+            }
+            echo "Position is : " . $this->position . "\n";
         }
-        echo "Position is : " . $this->position . "\n";
     }
 
-
     //Function to assign start position to 0
-    function startPosition()
+    function rollDice()
     {
-        // $startPosition = 0;
-        // echo "\nStart Position : $startPosition";
         //Roll die and get random number between 1 - 6
         $diceRoll = rand(1, 6);
         echo "\nNumber on dice is : $diceRoll \n";
-        $this->option($diceRoll);
+        return $diceRoll;
     }
 }
 ?>

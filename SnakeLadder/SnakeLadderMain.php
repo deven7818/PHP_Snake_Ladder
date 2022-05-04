@@ -12,7 +12,7 @@ class SnakeLadderMain
     {
         $snakeLadder = new SnakeLadder();
         $snakeLadder->welcome();
-        $snakeLadder->startPosition();
+        $snakeLadder->option();
     }
 }
 
