@@ -4,6 +4,7 @@
  * Uc-2
  * Program for Snake and ladder 
  * 1. Setting starting position to 0
+ * 2. Player rolls the die to get a random number between 1 to 6.
  */
 class SnakeLadder
 {
@@ -18,6 +19,9 @@ class SnakeLadder
     {
         $startPosition = 0;
         echo "\nStart Position : $startPosition";
+        //Roll die and get random number between 1 - 6
+        $diceRoll = rand(1, 6);
+        echo "\nPosition of the player is : $diceRoll";
     }
 }
 ?>
