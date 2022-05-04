@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Uc-4
+ * Uc-5
  * Program for Snake and ladder 
  * 1. Setting starting position to 0
  * 2. Player rolls the die to get a random number between 1 to 6.
  * 3. The Player then checks for a Option. They are No Play, Ladder or Snake.
  * 4. Repeat till player reaches to winning position 100.
+ * 5. Ensure the player gets to exact winning position 100.
  */
 class SnakeLadder
 {
@@ -35,11 +36,18 @@ class SnakeLadder
             echo "Option is : $optionCheck \n";
             switch ($optionCheck) {
                 case SnakeLadder::LADDER:
-                    $this->position += $diceRoll;
+                    if ($this->position + $diceRoll > 100) {
+                        $this->position = $this->position;
+                    } else {
+                        $this->position += $diceRoll;
+                    }
                     break;
 
                 case SnakeLadder::SNAKE:
                     $this->position -= $diceRoll;
+                    if ($this->position <= 0) {
+                        $this->position = 0;
+                    }
                     break;
 
                 default:
