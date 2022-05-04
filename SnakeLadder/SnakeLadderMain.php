@@ -12,7 +12,7 @@ class SnakeLadderMain
     {
         $snakeLadder = new SnakeLadder();
         $snakeLadder->welcome();
-        $snakeLadder->option();
+        $snakeLadder->playGame();
     }
 }
 $main = new SnakeLadderMain();
