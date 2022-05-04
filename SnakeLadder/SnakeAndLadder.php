@@ -8,6 +8,7 @@
  * 3. The Player then checks for a Option. They are No Play, Ladder or Snake.
  * 4. Repeat till player reaches to winning position 100.
  * 5. Ensure the player gets to exact winning position 100.
+ * 6. Report the number of times the dice was played to win the game and also the position after every die role
  */
 class SnakeLadder
 {
@@ -16,6 +17,7 @@ class SnakeLadder
     const LADDER = 1;
     const SNAKE = 2;
     public $position = 0;
+    public $diceCount = 0;
 
     //Function to display welcome message
     function welcome()
@@ -31,9 +33,11 @@ class SnakeLadder
     {
         while ($this->position < 100) {
             $diceRoll = $this->rollDice();
+            $this->diceCount++;
             $optionCheck = rand(0, 2);
 
             echo "Option is : $optionCheck \n";
+
             switch ($optionCheck) {
                 case SnakeLadder::LADDER:
                     if ($this->position + $diceRoll > 100) {
@@ -56,6 +60,7 @@ class SnakeLadder
             }
             echo "Position is : " . $this->position . "\n";
         }
+        echo "Total Count of dice roll is : " .$this->diceCount;
     }
 
     //Function to assign start position to 0

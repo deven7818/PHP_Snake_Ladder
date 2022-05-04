@@ -15,7 +15,6 @@ class SnakeLadderMain
         $snakeLadder->option();
     }
 }
-
 $main = new SnakeLadderMain();
 $main->main();
 ?>
